@@ -5,7 +5,7 @@ export const User_Login = (value) => async (dispatch) =>{
     dispatch({type: user_login_request});
     await axios.post('http://localhost:3001/api/users/login', value)
     .then( res => {
-        if( res.loginSuccess ){
+        if( res.data.loginSuccess ){
             dispatch({type: user_login_success});
         }
         else{
@@ -22,7 +22,7 @@ export const User_Register = (value) => async (dispatch) =>{
     await axios.post('http://localhost:3001/api/users/auth', value)
     .then( res => {
         console.log(res);
-        if( res.success ){
+        if( res.data.success ){
             dispatch({type: user_register_success});
         }
         else{
